@@ -19,6 +19,7 @@ def google_login_callback_view(request):
   except Exception as e:
     return HttpResponse(f"{e}", state=400)
 
-  print(token_json)
+  google_user_info = oauth.verify_token_json(token_json)
+  print(google_user_info)
 
-  return HttpResponse("Now a User Callback") 
+  return HttpResponse("Now a User Callback")  
